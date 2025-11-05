@@ -183,7 +183,9 @@ namespace GameServer
 
             char byType[2]{ 2, 14 };
             Helpers::CBroadcastHelper::BroadcastToAllOnline(
-                packet, byType, packet.size());
+                packet, byType, packet.size(),
+                Helpers::e_broadcast_type::both,
+                sMessage);
 
             return bResult;
         }
