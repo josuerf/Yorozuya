@@ -1,7 +1,8 @@
 #pragma once
 
 #include <windows.h>
-#include <filesystem>
+#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
+#include <experimental/filesystem>
 
 namespace fs = ::std::experimental::filesystem::v1;
 

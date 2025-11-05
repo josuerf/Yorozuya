@@ -1,0 +1,62 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "msbuild",
+      "args": [
+        "${workspaceFolder}/Yorozuya.sln",
+        "/p:Configuration=ReleaseDebug",
+        "/p:Platform=x64",
+        "/t:YorozuyaGS",
+        "/m"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": "$msCompile",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "build-release",
+      "type": "shell",
+      "command": "msbuild",
+      "args": [
+        "${workspaceFolder}/Yorozuya.sln",
+        "/p:Configuration=Release",
+        "/p:Platform=x64",
+        "/t:YorozuyaGS",
+        "/m"
+      ],
+      "group": "build",
+      "problemMatcher": "$msCompile",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "build-all",
+      "type": "shell",
+      "command": "msbuild",
+      "args": [
+        "${workspaceFolder}/Yorozuya.sln",
+        "/p:Configuration=ReleaseDebug",
+        "/p:Platform=x64",
+        "/m"
+      ],
+      "group": "build",
+      "problemMatcher": "$msCompile",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    }
+  ]
+}
+

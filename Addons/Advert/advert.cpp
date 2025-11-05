@@ -3,6 +3,7 @@
 #include "advert.h"
 #include "../../Common/ETypes.h"
 #include "../../Common/Helpers/RapidHelper.hpp"
+#include "../../Common/Helpers/BroadcastHelper.hpp"
 
 #include <ATF/global.hpp>
 
@@ -38,20 +39,26 @@ namespace GameServer
                 i.timer.begin(i.sDelay);
 
                 char byType[2]{ 2, 14 };
-                for (auto& player : ATF::Global::g_Player)
+                
+                // Loop único otimizado: faz broadcast e chat trans no mesmo loop
+                // Evita iterar duas vezes sobre os mesmos players
+                for (uint16_t idx = 0; idx < ATF::Global::max_player; ++idx)
                 {
-                    if (!player.m_bLive)
+                    auto& player = ATF::Global::g_Player[idx];
+                    
+                    // Early exit otimizado
+                    if (!player.m_bOper || !player.m_bLive)
                         continue;
 
-                    if (!player.m_bOper)
-                        continue;
-
+                    // Filtro premium
                     if (i.bHideForPremium && player.IsApplyPcbangPrimium())
                         continue;
 
+                    // Broadcast do packet
                     ATF::Global::g_NetProcess[(uint8_t)e_type_line::client]
-                        ->LoadSendMsg(player.m_ObjID.m_wIndex, byType, (char *)&i.packet, i.packet.size());
+                        ->LoadSendMsg(idx, byType, (char *)&i.packet, i.packet.size());
 
+                    // Chat trans
                     player.SendData_ChatTrans(
                         0,
                         -1,

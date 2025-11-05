@@ -12,11 +12,11 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{7db14895-df17-4e19-a0a5-2d2ef33fe89c}</ProjectGuid>
+    <ProjectGuid>{d70777e7-023a-4235-87f3-4bfb5ab8d329}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>AccuracyEffect</RootNamespace>
+    <RootNamespace>BossLog</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>AccuracyEffect</ProjectName>
+    <ProjectName>BossLog</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -113,14 +113,14 @@
     <ClInclude Include="..\..\Common\ETypes.h" />
     <ClInclude Include="..\..\Common\Interfaces\ModuleInterface.h" />
     <ClInclude Include="Common\version.h" />
-    <ClInclude Include="AccuracyEffect.h" />
+    <ClInclude Include="BossLog.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="ModuleProxy.cpp" />
-    <ClCompile Include="AccuracyEffect.cpp" />
+    <ClCompile Include="BossLog.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseDebug|x64'">Create</PrecompiledHeader>

@@ -1,3 +1,7 @@
+#define WIN32_LEAN_AND_MEAN
+#include <winsock2.h>
+#pragma comment(lib, "ws2_32.lib")
+
 #include "stdafx.h"
 
 #include "ChatLog.h"
@@ -84,7 +88,6 @@ namespace GameServer
                 { "trade", chat_type::chat_trade }
             };
 
-            ::std::wstring_convert<::std::codecvt_utf8_utf16<wchar_t>> converter;
             for (auto& chat : nodeConfig.GetObject())
             {
                 ::std::string sNameBlock(chat.name.GetString());
@@ -97,7 +100,15 @@ namespace GameServer
                 if (!active)
                     continue;
 
-                ::std::wstring wsNameChat = converter.from_bytes(sNameBlock);
+                // Convert UTF-8 to UTF-16 using Windows API
+                int wlen = MultiByteToWideChar(CP_UTF8, 0, sNameBlock.c_str(), -1, NULL, 0);
+                ::std::wstring wsNameChat;
+                if (wlen > 0)
+                {
+                    wsNameChat.resize(wlen, L'\0');
+                    MultiByteToWideChar(CP_UTF8, 0, sNameBlock.c_str(), -1, (LPWSTR)wsNameChat.c_str(), wlen);
+                    wsNameChat.resize(wlen - 1); // Remove null terminator
+                }
 
                 CChatLog::m_arrChatTrace[(size_t)if_find->second] =
                     CChatLog::m_pClientLog->create_trace(L"Chat channel", wsNameChat.c_str());
@@ -125,7 +136,8 @@ namespace GameServer
             struct in_addr ip_addr;
             ip_addr.s_addr = ipv4;
 
-            return ::std::string(inet_ntoa(ip_addr));
+            char* ip_str = inet_ntoa(ip_addr);
+            return ip_str ? ::std::string(ip_str) : ::std::string("0.0.0.0");
         }
 
         void CChatLog::pc_ChatCircleRequest(

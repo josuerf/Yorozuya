@@ -1,0 +1,60 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach to Process (x64)",
+      "type": "cppvsdbg",
+      "request": "attach",
+      "processId": "${command:pickProcess}",
+      "symbolSearchPath": "${workspaceFolder}\\x64\\ReleaseDebug",
+      "justMyCode": false,
+      "logging": {
+        "moduleLoad": false,
+        "trace": false,
+        "engineLogging": false
+      }
+    },
+    {
+      "name": "Attach to GameServer.exe (x64)",
+      "type": "cppvsdbg",
+      "request": "attach",
+      "processId": "${command:pickProcess}",
+      "symbolSearchPath": "${workspaceFolder}\\x64\\ReleaseDebug",
+      "justMyCode": false,
+      "logging": {
+        "moduleLoad": false,
+        "trace": false,
+        "engineLogging": false
+      }
+    },
+    {
+      "name": "Launch GameServer (x64 ReleaseDebug)",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/GameServer.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "console": "externalTerminal",
+      "preLaunchTask": "build",
+      "justMyCode": false
+    },
+    {
+      "name": "Launch GameServer (x64 Release)",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/GameServer.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "console": "externalTerminal",
+      "preLaunchTask": "build-release",
+      "justMyCode": false
+    }
+  ]
+}

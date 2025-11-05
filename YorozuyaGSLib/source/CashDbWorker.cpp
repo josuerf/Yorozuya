@@ -3,7 +3,7 @@
 
 START_ATF_NAMESPACE
     CashDbWorker::CashDbWorker()
-        : Worker("CashDbWorker", 2532, 2500)
+        : Worker(const_cast<char*>("CashDbWorker"), 2532, 2500)
     {
         using org_ptr = void (WINAPIV*)(struct CashDbWorker*);
         (org_ptr(0x14022b750L))(this);

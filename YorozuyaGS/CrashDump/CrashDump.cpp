@@ -1,7 +1,6 @@
 #include "stdafx.h"
 
 #include "CrashDump.h"
-#include <atltime.h>
 #include <dbghelp.h>
 #pragma comment(lib, "dbghelp.lib")
 
@@ -90,11 +89,15 @@ namespace GameServer
 
         ::std::wstring CCrashDump::BuildFileNameDump()
         {
-            ::ATL::CTime tmCurrentTime(::ATL::CTime::GetCurrentTime());
+            SYSTEMTIME st;
+            GetLocalTime(&st);
+
+            wchar_t szTime[64];
+            swprintf_s(szTime, L". %02d.%02d.%04d %02d-%02d-%02d.dmp",
+                st.wDay, st.wMonth, st.wYear, st.wHour, st.wMinute, st.wSecond);
 
             ::std::wstring wsRet(L"Dump " + ::std::to_wstring(m_nCrash++));
-
-            return wsRet + tmCurrentTime.Format(L". %d.%m.%Y %H-%M-%S.dmp").GetString();
+            return wsRet + szTime;
         }
 
         void WINAPIV CCrashDump::GenerateExceptionReport(

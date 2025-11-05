@@ -1,9 +1,15 @@
 #pragma once
 
 #include <array>
-#include <filesystem>
+#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
+#include <experimental/filesystem>
 
 namespace fs = ::std::experimental::filesystem::v1;
+
+// Forward declaration
+namespace GameServer::Addon {
+    ::std::string ip4_to_string(uint32_t ipv4);
+}
 
 #include <ATF/CPlayerInfo.hpp>
 #include "../../Common/Interfaces/ModuleInterface.h"

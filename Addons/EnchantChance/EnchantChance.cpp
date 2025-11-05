@@ -4,7 +4,8 @@
 
 #include <string>
 #include <fstream>
-#include <filesystem>
+#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
+#include <experimental/filesystem>
 #include <ATF/global.hpp>
 #include <rapidjson/prettywriter.h>
 #include <rapidjson/document.h>

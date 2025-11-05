@@ -4,6 +4,7 @@
 #include <memory>
 #include "../../Common/Interfaces/ModuleInterface.h"
 #include "../../Common/Helpers/ModuleHook.hpp"
+#include <functional>
 
 namespace GameServer
 {

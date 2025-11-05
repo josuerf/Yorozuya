@@ -2,7 +2,8 @@
 
 #include <unordered_map>
 #include <unordered_set>
-#include <filesystem>
+#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
+#include <experimental/filesystem>
 #include <ATF.hpp>
 #include "../Common/Helpers/SingletonHelper.hpp"
 #include "../Common/Interfaces/ModuleInterface.h"

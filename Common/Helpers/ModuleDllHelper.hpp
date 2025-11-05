@@ -1,7 +1,8 @@
 #pragma once
 
 #include <Windows.h>
-#include <filesystem>
+#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
+#include <experimental/filesystem>
 
 #include "../Common/Interfaces/ModuleInterface.h"
 
