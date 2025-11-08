@@ -45,7 +45,7 @@ namespace GameServer
                     }
                 }
 
-                auto& player_ex = CPlayerEx::get_instance();
+                auto player_ex = CPlayerEx::get_instance();
                 player_ex->Load(pObj);
             }
 
@@ -60,7 +60,7 @@ namespace GameServer
             next(pObj, bMoveOutLobby);
             pObj->m_bPostLoad = false;
 
-            auto& player_ex = CPlayerEx::get_instance();
+            auto player_ex = CPlayerEx::get_instance();
             player_ex->NetClose(pObj);
         }
     }

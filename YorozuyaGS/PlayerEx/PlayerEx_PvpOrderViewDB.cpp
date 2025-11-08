@@ -22,7 +22,8 @@ namespace GameServer
         {
             auto instance = ATF::CNationSettingManager::Instance();
 
-            SetLogFile("..\\ZoneServerLog\\", 
+            char logPath[] = "..\\ZoneServerLog\\";
+            SetLogFile(logPath, 
                 ATF::Global::g_MainThread->m_szWorldDBName);
 
             bool result = StartDataBase(
@@ -32,7 +33,9 @@ namespace GameServer
 
             if (!result)
             {
-                ATF::Global::MyMessageBox("DatabaseInit", "Connect World DB Failed!");
+                char title[] = "DatabaseInit";
+                char msg[] = "Connect World DB Failed!";
+                ATF::Global::MyMessageBox(title, msg);
                 throw std::runtime_error("Connect World DB Failed!");
             }
         }
@@ -68,7 +71,8 @@ namespace GameServer
 
         void CPvpOrderViewDB::AdjustTable()
         {
-            if (!TableExist("tbl_KillerList"))
+            char tableName[] = "tbl_KillerList";
+            if (!TableExist(tableName))
             {
                 static wchar_t wszQueryCreateTable[] = LR"(
                     CREATE TABLE [dbo].[tbl_KillerList](
@@ -117,7 +121,8 @@ namespace GameServer
             {
                 if (ReConnectDataBase() == false)
                 {
-                    CRFNewDatabase::ErrFmtLog("ReConnectDataBase Fail. Load killer list");
+                    char errMsg[] = "ReConnectDataBase Fail. Load killer list";
+                    CRFNewDatabase::ErrFmtLog(errMsg);
                     return;
                 }
             }
@@ -130,7 +135,8 @@ namespace GameServer
                     return;
                 else
                 {
-                    CRFNewDatabase::ErrorMsgLog(sqlRet, strQuery, "SQLExecDirectA", m_hStmtSelect);
+                    char funcName[] = "SQLExecDirectA";
+                    CRFNewDatabase::ErrorMsgLog(sqlRet, strQuery, funcName, m_hStmtSelect);
                     CRFNewDatabase::ErrorAction(sqlRet, m_hStmtSelect);
                     return;
                 }

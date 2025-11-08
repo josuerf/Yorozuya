@@ -5,6 +5,8 @@
 #include "../../Common/Helpers/TimeHelper.hpp"
 
 #include <unordered_map>
+#include <functional>
+#include <utility>
 #include <ATF/CMainThreadInfo.hpp>
 #include <ATF/CExchangeEvent.hpp>
 
@@ -61,14 +63,16 @@ namespace GameServer
             class CTask
             {
             public:
-                CTask(const CRunRule& rule, const ::std::function<void()>& impl)
+                template<typename F>
+                CTask(const CRunRule& rule, F&& impl)
                     : m_ruleRun(rule)
-                    , m_fnImpl(impl)
+                    , m_fnImpl(std::forward<F>(impl))
                 {
                 }
 
-                CTask(const ::std::function<void()>& impl)
-                    : CTask(CRunRule{}, impl)
+                template<typename F>
+                CTask(F&& impl)
+                    : CTask(CRunRule{}, std::forward<F>(impl))
                 {
                 }
 

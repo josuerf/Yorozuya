@@ -77,7 +77,9 @@ namespace GameServer
         rapidjson::Document GlobalConfig;
         if (GlobalConfig.ParseStream(isw).HasParseError())
         {
-            ATF::Global::MyMessageBox("CYorozuya::configure", "Configuration file - corrupted");
+            char title[] = "CYorozuya::configure";
+            char msg[] = "Configuration file - corrupted";
+            ATF::Global::MyMessageBox(title, msg);
             throw std::runtime_error("Configuration file - corrupted");
         }
 

@@ -91,7 +91,8 @@ namespace GameServer
 
                     for (auto& i : class_skill)
                     {
-                        i.swap(::std::unordered_map<int, TimeHelper::CTimer>{});
+                        ::std::unordered_map<int, TimeHelper::CTimer> empty;
+                        i.swap(empty);
                     }
 
                     for (auto& i : skill)

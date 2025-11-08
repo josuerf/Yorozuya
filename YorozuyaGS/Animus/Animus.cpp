@@ -108,7 +108,8 @@ namespace GameServer
                         {
                             if (nAlterExpa > 0)
                             {
-                                pObj->m_pMaster->Emb_AlterStat(6, 0, nAlterExpa, 0, "CPlayer::AlterExp_Animus()---0", true);
+                                char msg[] = "CPlayer::AlterExp_Animus()---0";
+                                pObj->m_pMaster->Emb_AlterStat(6, 0, nAlterExpa, 0, msg, true);
                             }
                             break;
                         }

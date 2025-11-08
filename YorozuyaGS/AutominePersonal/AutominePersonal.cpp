@@ -55,8 +55,9 @@ namespace GameServer
 
                 result = byUseBattery;
                 auto pBattery = pObj->m_pBatterySlot[byUseBattery].get_battery();
+                char logType[] = "BATTERY_DISCHARGE";
                 ATF::Global::s_MgrItemHistory->personal_amine_itemlog(
-                    "BATTERY_DISCHARGE",
+                    logType,
                     byUseBattery,
                     pBattery->m_byTableCode,
                     pBattery->m_wItemIndex,
@@ -74,8 +75,9 @@ namespace GameServer
                     break;
 
                 pBattery = pObj->m_pBatterySlot[byUseBattery].get_battery();
+                char logType2[] = "BATTERY_DISCHARGE";
                 ATF::Global::s_MgrItemHistory->personal_amine_itemlog(
-                    "BATTERY_DISCHARGE",
+                    logType2,
                     byUseBattery,
                     pBattery->m_byTableCode,
                     pBattery->m_wItemIndex,

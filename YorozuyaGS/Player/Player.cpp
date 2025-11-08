@@ -56,7 +56,7 @@ namespace GameServer
 
         void CPlayer::init_player_ex()
         {
-            auto& player_ex = CPlayerEx::get_instance();
+            auto player_ex = CPlayerEx::get_instance();
             for (size_t i = 0; i < ATF::Global::max_player; ++i)
             {
                 player_ex->init_player(i, &ATF::Global::g_Player[i]);

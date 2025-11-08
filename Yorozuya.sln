@@ -53,6 +53,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AccuracyEffect", "Addons\Ac
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BossLog", "Addons\BossLog\BossLog.vcxproj", "{D70777E7-023A-4235-87F3-4BFB5AB8D329}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AutoLoot", "Addons\AutoLoot\AutoLoot.vcxproj", "{4C284EE0-2C4E-4C0A-8DE4-D93AF268611C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -313,6 +315,18 @@ Global
 		{D70777E7-023A-4235-87F3-4BFB5AB8D329}.ReleaseDebug|Any CPU.Build.0 = ReleaseDebug|x64
 		{D70777E7-023A-4235-87F3-4BFB5AB8D329}.ReleaseDebug|x64.ActiveCfg = ReleaseDebug|x64
 		{D70777E7-023A-4235-87F3-4BFB5AB8D329}.ReleaseDebug|x64.Build.0 = ReleaseDebug|x64
+		{4C284EE0-2C4E-4C0A-8DE4-D93AF268611C}.Debug|Any CPU.ActiveCfg = ReleaseDebug|x64
+		{4C284EE0-2C4E-4C0A-8DE4-D93AF268611C}.Debug|Any CPU.Build.0 = ReleaseDebug|x64
+		{4C284EE0-2C4E-4C0A-8DE4-D93AF268611C}.Debug|x64.ActiveCfg = ReleaseDebug|x64
+		{4C284EE0-2C4E-4C0A-8DE4-D93AF268611C}.Debug|x64.Build.0 = ReleaseDebug|x64
+		{4C284EE0-2C4E-4C0A-8DE4-D93AF268611C}.Release|Any CPU.ActiveCfg = Release|x64
+		{4C284EE0-2C4E-4C0A-8DE4-D93AF268611C}.Release|Any CPU.Build.0 = Release|x64
+		{4C284EE0-2C4E-4C0A-8DE4-D93AF268611C}.Release|x64.ActiveCfg = Release|x64
+		{4C284EE0-2C4E-4C0A-8DE4-D93AF268611C}.Release|x64.Build.0 = Release|x64
+		{4C284EE0-2C4E-4C0A-8DE4-D93AF268611C}.ReleaseDebug|Any CPU.ActiveCfg = ReleaseDebug|x64
+		{4C284EE0-2C4E-4C0A-8DE4-D93AF268611C}.ReleaseDebug|Any CPU.Build.0 = ReleaseDebug|x64
+		{4C284EE0-2C4E-4C0A-8DE4-D93AF268611C}.ReleaseDebug|x64.ActiveCfg = ReleaseDebug|x64
+		{4C284EE0-2C4E-4C0A-8DE4-D93AF268611C}.ReleaseDebug|x64.Build.0 = ReleaseDebug|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -339,6 +353,7 @@ Global
 		{97B75FFF-E244-4CED-9FCC-43EF826A9CB7} = {9B077178-ACCD-4F3E-A838-D899DBB75DEB}
 		{7DB14895-DF17-4E19-A0A5-2D2EF33FE89C} = {9B077178-ACCD-4F3E-A838-D899DBB75DEB}
 		{D70777E7-023A-4235-87F3-4BFB5AB8D329} = {9B077178-ACCD-4F3E-A838-D899DBB75DEB}
+		{4C284EE0-2C4E-4C0A-8DE4-D93AF268611C} = {9B077178-ACCD-4F3E-A838-D899DBB75DEB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE57490E-BBC3-4C6B-9B33-6D9A8A3949C3}

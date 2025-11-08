@@ -51,15 +51,14 @@ namespace GameServer
                 m_pSystemUnhandledFilter = GetProcAddress(hKernel, "UnhandledExceptionFilter");
 
                 auto& core = ATF::CATFCore::get_instance();
-                core.reg_wrapper(
-                    &CCrashDump::UnhandledExceptionFilter,
-                    ATF::_hook_record{
-                        (LPVOID)m_pSystemUnhandledFilter,
-                        (LPVOID *)&UnhandledExceptionFilter_user,
-                        (LPVOID *)&UnhandledExceptionFilter_next,
-                        (LPVOID)ATF::cast_pointer_function(UnhandledExceptionFilter_wrapper),
-                        (LPVOID)ATF::cast_pointer_function((void(*)())&CCrashDump::UnhandledExceptionFilter)
-                    });
+                ATF::_hook_record hookRec{
+                    (LPVOID)m_pSystemUnhandledFilter,
+                    (LPVOID *)&UnhandledExceptionFilter_user,
+                    (LPVOID *)&UnhandledExceptionFilter_next,
+                    (LPVOID)ATF::cast_pointer_function(UnhandledExceptionFilter_wrapper),
+                    (LPVOID)ATF::cast_pointer_function((void(*)())&CCrashDump::UnhandledExceptionFilter)
+                };
+                core.reg_wrapper(&CCrashDump::UnhandledExceptionFilter, hookRec);
             }
         }
 

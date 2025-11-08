@@ -102,6 +102,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)\library\ATF\;$(SolutionDir)\library\MinHook\include\;$(SolutionDir)\library\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ControlFlowGuard>false</ControlFlowGuard>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <BrowseInformation>false</BrowseInformation>
