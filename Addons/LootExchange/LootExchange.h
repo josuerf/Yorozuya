@@ -36,9 +36,21 @@ namespace GameServer
 
             static bool AddMoney(ATF::CPlayer* pObj, uint32_t nMoneyType, int nMoneyValue);
 
+        // Filter configurations
+        struct ExchangeFilterConfig
+        {
+            bool bActivated;
+            std::string sItemCode;
+            bool bPremiumOnly;
+            uint32_t nMoneyType;
+            uint32_t nValue;
+        };
+
         private:
             static bool m_bActivated;
             static bool m_bExchangeAll;
+            static bool m_bPremiumOnlyAll;
+            static std::vector<ExchangeFilterConfig> m_ExchangeFilter;
 
         private:
             static void WINAPIV pc_TakeGroundingItem(
