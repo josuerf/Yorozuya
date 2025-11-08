@@ -3,6 +3,7 @@
 #include "PlayerEquip.h"
 #include "../../Common/ETypes.h"
 #include "../PlayerEx/PlayerEx.h"
+#include "../../Common/Helpers/ItemTableCodeValidations.hpp"
 
 #include <ATF/global.hpp>
 #include <ATF/_set_item_check_request_clzo.hpp>
@@ -72,6 +73,23 @@ namespace GameServer
 
             do
             {
+                // Validate table code for rings/amulets in EMBELLISH slot to prevent exploits
+                if (byStorageCode == ATF::STORAGE_POS::EMBELLISH && pCon != nullptr)
+                {
+                    uint8_t byTableCode = pCon->m_byTableCode;
+                    if (byTableCode == (uint8_t)e_code_item_table::tbl_code_ring ||
+                        byTableCode == (uint8_t)e_code_item_table::tbl_code_amulet)
+                    {
+                        if (!GameServer::Helpers::CItemTableCodeValidations::ValidateItemTableCode(
+                            pCon->m_byTableCode, 
+                            pCon->m_wItemIndex))
+                        {
+                            // Invalid table code - reject silently
+                            break;
+                        }
+                    }
+                }
+
                 pItem = next(pPlayer, byStorageCode, pCon, bEquipChange, bAdd);
                 if (pItem == nullptr)
                     break;
